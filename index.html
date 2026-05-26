@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Ayushmaan Khurana — AI/ML & Full Stack Developer</title>
-<meta name="description" content="Portfolio of Ayushmaan Khurana — Computer Science student specializing in AI/ML and full-stack development." />
+<title>Ayushmaan Khurana — AI/ML & Full-Stack Developer</title>
+<meta name="description" content="Portfolio of Ayushmaan Khurana — Computer Science student building and deploying AI/ML and full-stack systems." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Space+Mono:wght@400;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,500&family=Space+Mono:wght@400;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root {
     --bg: #0c0d10;
@@ -24,11 +24,8 @@
     --body: 'Manrope', -apple-system, sans-serif;
     --mono: 'Space Mono', monospace;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
-
   body {
     background: var(--bg);
     color: var(--text);
@@ -37,7 +34,6 @@
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
-
   body::before {
     content: "";
     position: fixed;
@@ -48,18 +44,19 @@
     pointer-events: none;
     z-index: 0;
   }
-
+  /* scroll progress bar */
+  #progress {
+    position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+    background: var(--accent); z-index: 99;
+    transition: width 0.1s linear;
+  }
   ::selection { background: var(--accent); color: #0c0d10; }
-
   a { color: inherit; text-decoration: none; }
-
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
 
   /* ---------- NAV ---------- */
   nav {
-    position: sticky;
-    top: 0;
-    z-index: 50;
+    position: sticky; top: 0; z-index: 50;
     backdrop-filter: blur(12px);
     background: rgba(12,13,16,0.78);
     border-bottom: 1px solid var(--line-soft);
@@ -68,326 +65,187 @@
     max-width: 1080px; margin: 0 auto; padding: 18px 32px;
     display: flex; align-items: center; justify-content: space-between;
   }
-  .nav-logo {
-    font-family: var(--mono);
-    font-size: 0.92rem;
-    letter-spacing: 0.02em;
-    color: var(--text);
-  }
+  .nav-logo { font-family: var(--mono); font-size: 0.92rem; letter-spacing: 0.02em; }
   .nav-logo span { color: var(--accent); }
   .nav-links { display: flex; gap: 30px; }
   .nav-links a {
-    font-size: 0.83rem;
-    color: var(--text-dim);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    transition: color 0.2s;
+    font-size: 0.83rem; color: var(--text-dim); letter-spacing: 0.04em;
+    text-transform: uppercase; transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--accent); }
   @media (max-width: 680px) { .nav-links { display: none; } }
 
   /* ---------- HERO ---------- */
-  header { padding: 110px 0 96px; }
+  header { padding: 116px 0 100px; }
   .eyebrow {
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    color: var(--accent);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin-bottom: 28px;
-    opacity: 0;
-    animation: rise 0.7s ease 0.05s forwards;
+    font-family: var(--mono); font-size: 0.78rem; color: var(--accent);
+    letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 28px;
+    opacity: 0; animation: rise 0.7s ease 0.05s forwards;
   }
   h1 {
-    font-family: var(--display);
-    font-weight: 500;
-    font-size: clamp(2.9rem, 7vw, 5.2rem);
-    line-height: 1.02;
-    letter-spacing: -0.02em;
-    margin-bottom: 30px;
-    opacity: 0;
-    animation: rise 0.7s ease 0.15s forwards;
+    font-family: var(--display); font-weight: 500;
+    font-size: clamp(2.9rem, 7vw, 5.2rem); line-height: 1.03;
+    letter-spacing: -0.02em; margin-bottom: 30px;
+    opacity: 0; animation: rise 0.7s ease 0.15s forwards;
   }
-  h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
+  h1 em { font-style: italic; color: var(--accent); }
   .lede {
-    font-size: 1.16rem;
-    color: var(--text-dim);
-    max-width: 600px;
-    margin-bottom: 42px;
-    opacity: 0;
-    animation: rise 0.7s ease 0.28s forwards;
+    font-size: 1.16rem; color: var(--text-dim); max-width: 620px;
+    margin-bottom: 42px; opacity: 0; animation: rise 0.7s ease 0.28s forwards;
   }
   .cta-row {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: rise 0.7s ease 0.4s forwards;
+    display: flex; gap: 16px; flex-wrap: wrap;
+    opacity: 0; animation: rise 0.7s ease 0.4s forwards;
   }
   .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-family: var(--mono);
-    font-size: 0.86rem;
-    letter-spacing: 0.02em;
-    padding: 14px 26px;
-    border-radius: 2px;
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--mono); font-size: 0.86rem; letter-spacing: 0.02em;
+    padding: 14px 26px; border-radius: 2px;
     transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
   }
-  .btn-primary {
-    background: var(--accent);
-    color: #0c0d10;
-    font-weight: 700;
-  }
+  .btn-primary { background: var(--accent); color: #0c0d10; font-weight: 700; }
   .btn-primary:hover { transform: translateY(-3px); background: #8df5d2; }
-  .btn-ghost {
-    border: 1px solid var(--line);
-    color: var(--text);
-  }
+  .btn-ghost { border: 1px solid var(--line); color: var(--text); }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
   .btn svg { width: 16px; height: 16px; }
 
   /* ---------- SECTION SHELL ---------- */
   section { padding: 64px 0; }
-  .sec-head {
-    display: flex;
-    align-items: baseline;
-    gap: 18px;
-    margin-bottom: 52px;
-  }
-  .sec-num {
-    font-family: var(--mono);
-    font-size: 0.82rem;
-    color: var(--accent-dim);
-  }
+  .sec-head { display: flex; align-items: baseline; gap: 18px; margin-bottom: 52px; }
+  .sec-num { font-family: var(--mono); font-size: 0.82rem; color: var(--accent-dim); }
   .sec-title {
-    font-family: var(--display);
-    font-weight: 500;
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
-    letter-spacing: -0.015em;
+    font-family: var(--display); font-weight: 500;
+    font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -0.015em;
   }
-  .sec-line {
-    flex: 1;
-    height: 1px;
-    background: var(--line);
-    align-self: center;
-  }
+  .sec-line { flex: 1; height: 1px; background: var(--line); align-self: center; }
 
-  /* ---------- EDUCATION / EXPERIENCE ENTRIES ---------- */
+  /* ---------- ENTRIES ---------- */
   .entry {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 8px 32px;
-    padding: 28px 0;
-    border-bottom: 1px solid var(--line-soft);
+    display: grid; grid-template-columns: 1fr auto; gap: 8px 32px;
+    padding: 28px 0; border-bottom: 1px solid var(--line-soft);
   }
   .entry:last-child { border-bottom: none; }
-  .entry-title {
-    font-size: 1.18rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-  }
+  .entry-title { font-size: 1.18rem; font-weight: 700; letter-spacing: -0.01em; }
   .entry-org { color: var(--accent); font-weight: 600; }
-  .entry-sub {
-    color: var(--text-dim);
-    font-size: 0.96rem;
-    margin-top: 2px;
-  }
+  .entry-sub { color: var(--text-dim); font-size: 0.96rem; margin-top: 2px; }
   .entry-meta {
-    font-family: var(--mono);
-    font-size: 0.8rem;
-    color: var(--text-faint);
-    text-align: right;
-    white-space: nowrap;
+    font-family: var(--mono); font-size: 0.8rem; color: var(--text-faint);
+    text-align: right; white-space: nowrap;
   }
   .entry-meta .meta-2 { display: block; margin-top: 4px; color: var(--text-dim); }
-  .entry-points {
-    grid-column: 1 / -1;
-    margin-top: 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-  }
+  .entry-points { grid-column: 1 / -1; margin-top: 14px; display: flex; flex-direction: column; gap: 9px; }
   .entry-points li {
-    list-style: none;
-    position: relative;
-    padding-left: 22px;
-    color: var(--text-dim);
-    font-size: 0.97rem;
+    list-style: none; position: relative; padding-left: 22px;
+    color: var(--text-dim); font-size: 0.97rem;
   }
-  .entry-points li::before {
-    content: "▹";
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-  }
+  .entry-points li::before { content: "▹"; position: absolute; left: 0; color: var(--accent); }
   .entry-points strong { color: var(--text); font-weight: 600; }
   @media (max-width: 620px) {
     .entry { grid-template-columns: 1fr; }
     .entry-meta { text-align: left; }
   }
 
-  /* ---------- PROJECTS ---------- */
-  .proj-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 22px;
-  }
+  /* ---------- PROJECTS (expandable) ---------- */
+  .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
   @media (max-width: 720px) { .proj-grid { grid-template-columns: 1fr; } }
   .proj {
-    background: var(--bg-card);
-    border: 1px solid var(--line-soft);
-    border-radius: 4px;
-    padding: 30px 28px;
+    background: var(--bg-card); border: 1px solid var(--line-soft);
+    border-radius: 4px; padding: 30px 28px;
     transition: transform 0.22s ease, border-color 0.22s ease;
-    display: flex;
-    flex-direction: column;
+    display: flex; flex-direction: column;
   }
-  .proj:hover { transform: translateY(-5px); border-color: var(--accent-dim); }
-  .proj-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 14px;
-  }
-  .proj-name {
-    font-family: var(--display);
-    font-size: 1.5rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-  }
-  .proj-index {
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    color: var(--text-faint);
-  }
+  .proj.expandable { cursor: pointer; }
+  .proj.expandable:hover { transform: translateY(-5px); border-color: var(--accent-dim); }
+  .proj-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+  .proj-name { font-family: var(--display); font-size: 1.5rem; font-weight: 600; letter-spacing: -0.01em; }
+  .proj-index { font-family: var(--mono); font-size: 0.78rem; color: var(--text-faint); }
   .proj-tag {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--accent);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    margin-bottom: 16px;
+    font-family: var(--mono); font-size: 0.72rem; color: var(--accent);
+    letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 16px;
   }
-  .proj-desc {
-    color: var(--text-dim);
-    font-size: 0.96rem;
-    margin-bottom: 22px;
-    flex: 1;
-  }
-  .proj-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
+  .proj-desc { color: var(--text-dim); font-size: 0.96rem; margin-bottom: 18px; flex: 1; }
+  .proj-stack { display: flex; flex-wrap: wrap; gap: 8px; }
   .chip {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--text-dim);
-    border: 1px solid var(--line);
-    border-radius: 2px;
-    padding: 5px 10px;
+    font-family: var(--mono); font-size: 0.72rem; color: var(--text-dim);
+    border: 1px solid var(--line); border-radius: 2px; padding: 5px 10px;
   }
+  /* expandable detail */
+  .proj-more {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease, margin 0.4s ease, opacity 0.3s ease;
+    opacity: 0;
+  }
+  .proj.open .proj-more { max-height: 460px; opacity: 1; margin-top: 18px; }
+  .proj-more-inner { border-top: 1px solid var(--line-soft); padding-top: 16px; }
+  .proj-more h4 {
+    font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--accent-dim); margin: 12px 0 6px;
+  }
+  .proj-more h4:first-child { margin-top: 0; }
+  .proj-more p { font-size: 0.92rem; color: var(--text-dim); }
+  .proj-toggle {
+    margin-top: 16px; font-family: var(--mono); font-size: 0.76rem;
+    color: var(--accent); display: inline-flex; align-items: center; gap: 7px;
+  }
+  .proj-toggle .tog-icon { transition: transform 0.3s ease; display: inline-block; }
+  .proj.open .proj-toggle .tog-icon { transform: rotate(45deg); }
+
+  /* repos card */
+  .proj-repos { display: flex; flex-direction: column; gap: 13px; margin-bottom: 18px; }
+  .repo-row { display: flex; gap: 11px; align-items: baseline; }
+  .repo-name { font-family: var(--mono); font-size: 0.82rem; color: var(--text); white-space: nowrap; }
+  .repo-blurb { font-size: 0.88rem; color: var(--text-dim); }
 
   /* ---------- MISC ---------- */
-  .misc-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
+  .misc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
   @media (max-width: 720px) { .misc-grid { grid-template-columns: 1fr; } }
   .misc-card {
-    background: var(--bg-elev);
-    border: 1px solid var(--line-soft);
-    border-radius: 4px;
-    padding: 26px;
+    background: var(--bg-elev); border: 1px solid var(--line-soft);
+    border-radius: 4px; padding: 26px;
   }
   .misc-card h3 {
-    font-family: var(--mono);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--accent);
-    margin-bottom: 16px;
+    font-family: var(--mono); font-size: 0.8rem; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--accent); margin-bottom: 16px;
   }
   .misc-item { margin-bottom: 16px; }
   .misc-item:last-child { margin-bottom: 0; }
   .misc-item .mi-title { font-weight: 700; font-size: 0.99rem; }
-  .misc-item .mi-tag {
-    font-family: var(--mono);
-    font-size: 0.74rem;
-    color: var(--text-faint);
-  }
+  .misc-item .mi-tag { font-family: var(--mono); font-size: 0.74rem; color: var(--text-faint); }
   .misc-item .mi-body { color: var(--text-dim); font-size: 0.92rem; margin-top: 3px; }
-  .skill-line { margin-bottom: 14px; }
+  .skill-line { margin-bottom: 16px; }
   .skill-line:last-child { margin-bottom: 0; }
-  .skill-line .sl-label {
-    font-weight: 700;
-    font-size: 0.92rem;
-    display: block;
-    margin-bottom: 6px;
-  }
+  .skill-line .sl-label { font-weight: 700; font-size: 0.92rem; display: block; margin-bottom: 7px; }
   .skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
 
   /* ---------- FOOTER ---------- */
-  footer {
-    border-top: 1px solid var(--line-soft);
-    padding: 70px 0 56px;
-    margin-top: 40px;
-  }
-  .foot-grid {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 40px;
-    flex-wrap: wrap;
-  }
+  footer { border-top: 1px solid var(--line-soft); padding: 70px 0 56px; margin-top: 40px; }
+  .foot-grid { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; flex-wrap: wrap; }
   .foot-h {
-    font-family: var(--display);
-    font-size: clamp(1.7rem, 4vw, 2.4rem);
-    font-weight: 500;
-    letter-spacing: -0.015em;
-    margin-bottom: 10px;
+    font-family: var(--display); font-size: clamp(1.7rem, 4vw, 2.4rem);
+    font-weight: 500; letter-spacing: -0.015em; margin-bottom: 10px;
   }
   .foot-mail {
-    font-family: var(--mono);
-    font-size: 0.95rem;
-    color: var(--accent);
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.2s;
+    font-family: var(--mono); font-size: 0.95rem; color: var(--accent);
+    border-bottom: 1px solid transparent; transition: border-color 0.2s;
   }
   .foot-mail:hover { border-color: var(--accent); }
   .foot-links { display: flex; gap: 14px; }
-  .foot-credit {
-    font-family: var(--mono);
-    font-size: 0.76rem;
-    color: var(--text-faint);
-    margin-top: 44px;
-  }
+  .foot-credit { font-family: var(--mono); font-size: 0.76rem; color: var(--text-faint); margin-top: 44px; }
 
   /* ---------- ANIMATIONS ---------- */
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(22px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .reveal {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
+  @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.in { opacity: 1; transform: translateY(0); }
-
   @media (prefers-reduced-motion: reduce) {
     *, *::before { animation: none !important; transition: none !important; }
     .reveal { opacity: 1; transform: none; }
+    .proj-more { transition: none; }
   }
 </style>
 </head>
 <body>
+
+<div id="progress"></div>
 
 <nav>
   <div class="nav-inner">
@@ -406,19 +264,18 @@
 <header>
   <div class="wrap">
     <div class="eyebrow">Computer Science · AI / ML Specialization</div>
-    <h1>Ayushmaan Khurana —<br />building <em>intelligent</em> systems, end&nbsp;to&nbsp;end.</h1>
+    <h1>I build AI systems —<br />and I <em>ship</em> them.</h1>
     <p class="lede">
-      I design and ship full-stack and machine-learning systems — from
-      NLP pipelines and supply-chain simulators to deployed campus platforms.
-      AWS-certified, focused on AI/ML and applied software engineering.
+      Ayushmaan Khurana. I take machine-learning ideas the whole distance:
+      from NLP pipelines and graph-based simulators to deployed, full-stack
+      products on AWS. AWS-certified, published in applied healthcare AI,
+      and most at home where research meets real software.
     </p>
     <div class="cta-row">
-      <!-- Resume button -->
       <a class="btn btn-primary" href="https://drive.google.com/file/d/1xdD6R-LMDkG4jiL3txibbDITVR9pREzr/view?usp=sharing" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         View Résumé
       </a>
-      <!-- GitHub button -->
       <a class="btn btn-ghost" href="https://github.com/ayushmaankhurana" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.06-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.01 2.89-.01 3.29 0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg>
         GitHub
@@ -439,34 +296,28 @@
     <div class="entry reveal">
       <div>
         <div class="entry-title"><span class="entry-org">Manav Rachna University</span></div>
-        <div class="entry-sub">B.Tech, Computer Science and Engineering (AI / ML Specialization) · Faridabad, Haryana</div>
+        <div class="entry-sub">B.Tech in Computer Science &amp; Engineering, AI/ML Specialization · Faridabad, Haryana</div>
       </div>
       <div class="entry-meta">
         Sep 2025 — Present
-        <span class="meta-2">CGPA 9.97 / 10 (incl. migrated grades)</span>
+        <span class="meta-2">CGPA 9.97 / 10</span>
       </div>
     </div>
 
     <div class="entry reveal">
       <div>
         <div class="entry-title"><span class="entry-org">University of Maryland</span></div>
-        <div class="entry-sub">Dual Degree: Computer Science and Applied Mathematics · College Park, MD, USA</div>
+        <div class="entry-sub">Dual-degree in Computer Science &amp; Applied Mathematics, College Park — transferred to MRU</div>
       </div>
-      <div class="entry-meta">
-        Aug 2022 — Aug 2025
-        <span class="meta-2">Migrated to MRU</span>
-      </div>
+      <div class="entry-meta">Aug 2022 — Aug 2025</div>
     </div>
 
     <div class="entry reveal">
       <div>
         <div class="entry-title"><span class="entry-org">Global Indian International School</span></div>
-        <div class="entry-sub">PG-Smart Campus · Singapore — IGCSE (Grade 10) &amp; IBDP (Grade 12)</div>
+        <div class="entry-sub">Singapore — IGCSE (93.75%) and IB Diploma (43/45, 95.56%)</div>
       </div>
-      <div class="entry-meta">
-        Jun 2018 — May 2022
-        <span class="meta-2">IGCSE 93.75% · IBDP 43/45 (95.56%)</span>
-      </div>
+      <div class="entry-meta">Jun 2018 — May 2022</div>
     </div>
   </div>
 </section>
@@ -486,8 +337,8 @@
       </div>
       <div class="entry-meta">Jun 2024 — Jul 2024<span class="meta-2">Gurugram, India</span></div>
       <ul class="entry-points">
-        <li>Engineered a resume–JD matching <strong>Azure DevOps pipeline</strong> using classical and deep-learning models to produce a candidate <strong>compatibility score</strong>, reaching <strong>87% classification accuracy</strong> on the test set.</li>
-        <li>Built a Data &amp; AI portal with <strong>ReactJS, FastAPI and Python</strong> — 6+ web applications behind a <strong>Webpack-based Micro Frontend architecture</strong> for the App Store and Login surfaces.</li>
+        <li>Built a resume-to-job matching system that scores candidate fit, pairing classical and deep-learning models inside an <strong>Azure DevOps pipeline</strong> — reaching <strong>87% classification accuracy</strong> on the test set.</li>
+        <li>Shipped a Data &amp; AI portal of 6+ web apps on a <strong>Webpack Micro Frontend architecture</strong>, building the App Store and Login surfaces with React, FastAPI and Python.</li>
       </ul>
     </div>
 
@@ -497,8 +348,8 @@
       </div>
       <div class="entry-meta">Jun 2023 — Jul 2023<span class="meta-2">Singapore</span></div>
       <ul class="entry-points">
-        <li>Automated <strong>event operations</strong> — 24/7 form notifications, client email scraping, and RSVP / on-site check-in for large events (e.g. Olympics Esports Week, <strong>2000+ attendees</strong>) using <strong>Zapier, UiPath and Python</strong>.</li>
-        <li>Developed a printer-rental web app, owning the Product and Reservation flows to streamline the rental process and improve UX.</li>
+        <li>Automated live event operations — notifications, email scraping and on-site check-in — for events as large as <strong>Olympics Esports Week (2000+ attendees)</strong> using Zapier, UiPath and Python.</li>
+        <li>Built a printer-rental web app end to end, owning the product and reservation flows to make the rental process faster and cleaner.</li>
       </ul>
     </div>
 
@@ -508,8 +359,8 @@
       </div>
       <div class="entry-meta">Jun 2021 — Jul 2021<span class="meta-2">Faridabad, India</span></div>
       <ul class="entry-points">
-        <li>Implemented <strong>email and website data-scraping</strong> automations with <strong>UiPath and Python</strong>, handling extraction across <strong>3 million+ inputs</strong>.</li>
-        <li>Built Python scripts with <strong>Pandas and OpenPyXL</strong> to automate Excel/CSV <strong>data manipulation and validation</strong> for statistical analysis of 100k+ entries, using trigger-driven, scheduled workflows.</li>
+        <li>Wrote UiPath and Python automations for web and email data extraction, reliably handling <strong>3M+ inputs</strong>.</li>
+        <li>Built Pandas / OpenPyXL scripts on scheduled, trigger-driven workflows to clean and validate Excel and CSV data for analysis of <strong>100k+ records</strong>.</li>
       </ul>
     </div>
   </div>
@@ -526,17 +377,17 @@
 
     <div class="proj-grid">
 
-      <article class="proj reveal">
+      <!-- NEXUS -->
+      <article class="proj expandable reveal" tabindex="0" role="button" aria-expanded="false">
         <div class="proj-top">
           <span class="proj-name">NEXUS</span>
           <span class="proj-index">/01</span>
         </div>
         <div class="proj-tag">Full-Stack · Campus Platform</div>
         <p class="proj-desc">
-          A unified campus intelligence platform consolidating attendance,
-          access control, real-time presence monitoring and incident management.
-          Dual-signal verification (BLE beacons + GPS geofencing), four role-scoped
-          dashboards, and authorization enforced at the service layer.
+          Campuses run attendance, access and security as separate manual systems.
+          NEXUS folds all three into one platform — verifying presence with BLE
+          beacons and GPS geofencing, behind four role-scoped dashboards.
         </p>
         <div class="proj-stack">
           <span class="chip">Fastify</span>
@@ -544,21 +395,29 @@
           <span class="chip">PostgreSQL</span>
           <span class="chip">Prisma</span>
           <span class="chip">React</span>
-          <span class="chip">JWT</span>
         </div>
+        <div class="proj-more">
+          <div class="proj-more-inner">
+            <h4>What makes it interesting</h4>
+            <p>Two location signals do different jobs: room-level BLE beacons drive attendance, while GPS geofencing (matched via the Haversine formula) powers a building-level presence map.</p>
+            <h4>Engineering focus</h4>
+            <p>Authorization is enforced at the service layer, not just on routes — a faculty member only sees sections actually assigned to them. JWT auth uses short-lived access tokens with rotating refresh tokens.</p>
+          </div>
+        </div>
+        <span class="proj-toggle"><span class="tog-icon">+</span> Details</span>
       </article>
 
-      <article class="proj reveal">
+      <!-- MEDFLUX -->
+      <article class="proj expandable reveal" tabindex="0" role="button" aria-expanded="false">
         <div class="proj-top">
           <span class="proj-name">MedFlux</span>
           <span class="proj-index">/02</span>
         </div>
         <div class="proj-tag">Simulation · Machine Learning</div>
         <p class="proj-desc">
-          A medical supply-chain shock simulator that models logistics networks
-          as capacity-constrained graphs, propagates disruptions across discrete
-          time-steps, and uses an ML predictor to estimate recovery time and peak
-          shortage before a full simulation runs.
+          When one supplier fails, shortages cascade through an entire health
+          network. MedFlux models a medical supply chain as a graph and simulates
+          exactly how those shocks spread — and how long recovery takes.
         </p>
         <div class="proj-stack">
           <span class="chip">FastAPI</span>
@@ -567,19 +426,28 @@
           <span class="chip">XGBoost</span>
           <span class="chip">AWS</span>
         </div>
+        <div class="proj-more">
+          <div class="proj-more-inner">
+            <h4>What makes it interesting</h4>
+            <p>A discrete time-step engine propagates inventory and backlog across a capacity-constrained graph, quantifying a shock-amplification ratio — how much the network magnifies a disruption.</p>
+            <h4>Engineering focus</h4>
+            <p>An XGBoost regressor trained on simulated scenarios predicts recovery time and peak shortage before a full simulation runs, keeping the interactive dashboard under five seconds for 50-node networks.</p>
+          </div>
+        </div>
+        <span class="proj-toggle"><span class="tog-icon">+</span> Details</span>
       </article>
 
-      <article class="proj reveal">
+      <!-- POCKETCHART -->
+      <article class="proj expandable reveal" tabindex="0" role="button" aria-expanded="false">
         <div class="proj-top">
           <span class="proj-name">PocketChart</span>
           <span class="proj-index">/03</span>
         </div>
         <div class="proj-tag">NLP · Healthcare</div>
         <p class="proj-desc">
-          A real-time voice-assisted clinical charting app. Streams dictation over
-          WebSockets, transcribes with Whisper, and runs a medical NLP pipeline
-          (medSpaCy / sciSpacy) to convert natural language into structured JSON
-          patient records — localized for Indian English and names.
+          Doctors lose hours to manual data entry. PocketChart lets them simply
+          talk — streaming dictation in real time and turning natural speech into
+          structured, machine-readable patient records.
         </p>
         <div class="proj-stack">
           <span class="chip">Next.js</span>
@@ -588,22 +456,43 @@
           <span class="chip">Whisper</span>
           <span class="chip">spaCy</span>
         </div>
+        <div class="proj-more">
+          <div class="proj-more-inner">
+            <h4>What makes it interesting</h4>
+            <p>Audio streams over WebSockets for low-latency transcription, then a medical NLP pipeline detects intent, extracts clinical entities and normalizes values into structured JSON — localized for Indian English and names.</p>
+            <h4>Engineering focus</h4>
+            <p>Confidence scoring and confirmation prompts catch recognition errors; security is handled with row-level database policies and MFA. Presented as research at ICICSS 2026.</p>
+          </div>
+        </div>
+        <span class="proj-toggle"><span class="tog-icon">+</span> Details</span>
       </article>
 
+      <!-- MORE ON GITHUB -->
       <article class="proj reveal">
         <div class="proj-top">
-          <span class="proj-name">More</span>
+          <span class="proj-name">More Work</span>
           <span class="proj-index">/04</span>
         </div>
-        <div class="proj-tag">On GitHub</div>
-        <p class="proj-desc">
-          Additional experiments, automation tooling and coursework live on my
-          GitHub. Repositories, commit history and works-in-progress are all
-          open there.
-        </p>
-        <div class="proj-stack">
-          <a class="chip" href="https://github.com/ayushmaankhurana" target="_blank" rel="noopener" style="color:var(--accent);border-color:var(--accent-dim);">→ github.com/ayushmaankhurana</a>
+        <div class="proj-tag">Selected Repositories</div>
+        <div class="proj-repos">
+          <div class="repo-row">
+            <span class="repo-name">HighFreqTrading</span>
+            <span class="repo-blurb">A high-frequency trading platform exploring low-latency market systems.</span>
+          </div>
+          <div class="repo-row">
+            <span class="repo-name">Oseon</span>
+            <span class="repo-blurb">A multi-agent toolkit for autonomous text generation and editing.</span>
+          </div>
+          <div class="repo-row">
+            <span class="repo-name">FastLight</span>
+            <span class="repo-blurb">A Python project focused on fast, lightweight processing.</span>
+          </div>
+          <div class="repo-row">
+            <span class="repo-name">Subtitles</span>
+            <span class="repo-blurb">A TypeScript tool for subtitle generation and handling.</span>
+          </div>
         </div>
+        <a class="proj-toggle" href="https://github.com/ayushmaankhurana" target="_blank" rel="noopener" style="margin-top:auto;">→ All repositories on GitHub</a>
       </article>
 
     </div>
@@ -625,7 +514,7 @@
         <h3>Certifications</h3>
         <div class="misc-item">
           <div class="mi-title">AWS Certified Cloud Practitioner</div>
-          <div class="mi-tag">AWS CLF-C02 · Valid till 17 Mar 2029</div>
+          <div class="mi-tag">AWS CLF-C02 · Valid through Mar 2029</div>
         </div>
       </div>
 
@@ -634,7 +523,7 @@
         <div class="misc-item">
           <div class="mi-title">Evolving Predictive Analytics in Healthcare</div>
           <div class="mi-tag">Book Chapter — IET, UK</div>
-          <div class="mi-body">Review on integrating Python in healthcare, covering genomic sequencing and AI prediction models.</div>
+          <div class="mi-body">A review of how Python underpins modern healthcare analytics, spanning genomic sequencing and AI prediction models.</div>
         </div>
         <div class="misc-item">
           <div class="mi-title">A Framework to Evaluate NLP Model Robustness Against Semantic-Preserving Text Transformations</div>
@@ -645,58 +534,69 @@
       <div class="misc-card reveal">
         <h3>Achievements &amp; Highlights</h3>
         <div class="misc-item">
-          <div class="mi-title">Secretary General — UMD Int'l Relations Association</div>
+          <div class="mi-title">Secretary General — UMD International Relations Association</div>
           <div class="mi-tag">2022 – 2025</div>
-          <div class="mi-body">Head delegate of UMD's competitive Model UN team; led delegation and individual awards at Harvard, UPenn and NYU conferences.</div>
+          <div class="mi-body">Led UMD's competitive Model UN team to delegation and individual awards at Harvard, UPenn and NYU.</div>
         </div>
         <div class="misc-item">
           <div class="mi-title">Leadership &amp; Events</div>
-          <div class="mi-body">President &amp; lead organizer of a TEDxYouth event in Singapore; President of the Quiz Club; organized 4 events including 2 national-level competitions.</div>
+          <div class="mi-body">President and lead organizer of a TEDxYouth event in Singapore; organized four club events, two at national level.</div>
         </div>
         <div class="misc-item">
-          <div class="mi-title">Awards</div>
-          <div class="mi-body">3rd in Singapore — World Economics Cup 2021. 40+ MUNs: 5 Best Delegate &amp; 9 Outstanding Delegate awards. Presented PocketChart research at ICICSS 2026.</div>
+          <div class="mi-title">Competitions</div>
+          <div class="mi-body">3rd in Singapore at the World Economics Cup 2021; 40+ MUNs with 5 Best Delegate and 9 Outstanding Delegate awards.</div>
         </div>
       </div>
 
       <div class="misc-card reveal">
         <h3>Technical Skills</h3>
         <div class="skill-line">
-          <span class="sl-label">ML &amp; Statistical Analytics</span>
-          <div class="skill-tags">
-            <span class="chip">scikit-learn</span>
-            <span class="chip">XGBoost</span>
-            <span class="chip">PyTorch</span>
-            <span class="chip">TensorFlow</span>
-            <span class="chip">Pandas</span>
-            <span class="chip">NumPy</span>
-            <span class="chip">Tableau</span>
-            <span class="chip">Power BI</span>
-          </div>
-        </div>
-        <div class="skill-line">
-          <span class="sl-label">Programming &amp; Data Engineering</span>
+          <span class="sl-label">Languages</span>
           <div class="skill-tags">
             <span class="chip">Python</span>
             <span class="chip">Java</span>
             <span class="chip">SQL</span>
             <span class="chip">R</span>
-            <span class="chip">PySpark</span>
-            <span class="chip">ReactJS</span>
-            <span class="chip">FastAPI</span>
-            <span class="chip">Git</span>
-            <span class="chip">Postgres</span>
-            <span class="chip">MongoDB</span>
+            <span class="chip">TypeScript</span>
           </div>
         </div>
         <div class="skill-line">
-          <span class="sl-label">Cloud &amp; Platforms</span>
+          <span class="sl-label">AI / ML &amp; GenAI</span>
+          <div class="skill-tags">
+            <span class="chip">PyTorch</span>
+            <span class="chip">TensorFlow</span>
+            <span class="chip">scikit-learn</span>
+            <span class="chip">XGBoost</span>
+            <span class="chip">LLMs &amp; NLP</span>
+            <span class="chip">spaCy</span>
+            <span class="chip">Whisper</span>
+            <span class="chip">Multi-Agent Workflows</span>
+          </div>
+        </div>
+        <div class="skill-line">
+          <span class="sl-label">Backend &amp; Data</span>
+          <div class="skill-tags">
+            <span class="chip">FastAPI</span>
+            <span class="chip">Fastify</span>
+            <span class="chip">Node.js</span>
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">MongoDB</span>
+            <span class="chip">Prisma</span>
+            <span class="chip">PySpark</span>
+            <span class="chip">Pandas / NumPy</span>
+          </div>
+        </div>
+        <div class="skill-line">
+          <span class="sl-label">Cloud &amp; Tooling</span>
           <div class="skill-tags">
             <span class="chip">AWS Lambda</span>
             <span class="chip">AWS ECR</span>
             <span class="chip">AWS S3</span>
             <span class="chip">CloudFront</span>
             <span class="chip">Azure DevOps</span>
+            <span class="chip">Docker</span>
+            <span class="chip">Git</span>
+            <span class="chip">React</span>
             <span class="chip">Supabase</span>
           </div>
         </div>
@@ -724,16 +624,33 @@
 </footer>
 
 <script>
-  // Scroll reveal
+  // scroll progress bar
+  const progress = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progress.style.width = scrolled + '%';
+  }, { passive: true });
+
+  // scroll reveal
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
-      if (e.isIntersecting) {
-        e.target.classList.add('in');
-        io.unobserve(e.target);
-      }
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
     });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // expandable project cards
+  document.querySelectorAll('.proj.expandable').forEach((card) => {
+    const toggle = () => {
+      const open = card.classList.toggle('open');
+      card.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); toggle(); }
+    });
+  });
 </script>
 
 </body>
